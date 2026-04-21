@@ -17,15 +17,13 @@ class Spiral < Formula
            *std_cmake_args
     system "cmake", "--build", "build", "--config", "Release"
 
-    # Install binaries
+    # All dylibs are built into build/bin/ alongside the executables
     bin.install "build/bin/llama-cli"
     bin.install "build/bin/llama-server"
     bin.install "build/bin/llama-simple"
 
-    # Install shared libraries (required by binaries)
-    lib.install Dir["build/src/libllama.*dylib*"]
-    lib.install Dir["build/src/libmtmd.*dylib*"]
-    lib.install Dir["build/ggml/src/libggml*.*dylib*"]
+    # Install shared libraries from build/bin/
+    lib.install Dir["build/bin/lib*.dylib"]
 
     # Fix rpaths so binaries find the libs
     %w[llama-cli llama-server llama-simple].each do |b|
