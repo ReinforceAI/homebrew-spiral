@@ -2,7 +2,7 @@ class Spiral < Formula
   desc "Run 7B coding models on Mac with 200K+ token context via physics-derived compression"
   homepage "https://github.com/ReinforceAI/spiral"
   url "https://github.com/ReinforceAI/spiral/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "72d3322aada943c524ca433ddecb0378944be3e6e6c88dc5f479f666ef4e7bde"
+  sha256 "34207e05a3a826a8d3cb35abb66cac6ff4abeda4b104a92681c16b56664ba4b1"
   license "MIT"
 
   depends_on "cmake" => :build
