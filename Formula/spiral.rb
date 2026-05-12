@@ -1,8 +1,8 @@
 class Spiral < Formula
-  desc "Run 7B coding models on Mac with 200K+ token context via physics-derived compression"
+  desc "Calibration-free transformer compression for Qwen on Mac and CUDA"
   homepage "https://github.com/ReinforceAI/spiral"
-  url "https://github.com/ReinforceAI/spiral/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "c2b033771df473e7ea51c0da6d090c8d252438d5c229b3772fa69da1a8baadeb"
+  url "https://github.com/ReinforceAI/spiral/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "5de985fcb313d4e4c25dfc2220dff0500ad4d128d99407342545537539a6dbdc"
   license "MIT"
 
   depends_on "cmake" => :build
@@ -42,15 +42,19 @@ class Spiral < Formula
 
   def caveats
     <<~EOS
-      Spiral has been installed. On first run, the model will be
-      downloaded automatically (~4.7 GB).
+      Spiral v0.3.0 installed. Available models:
+
+        qwen-25-7b-spiral     Qwen2.5-Coder-7B   (3.0 GB,  v0.2.0 Spiral_3)
+        qwen-36-35b-spiral    Qwen3.6-35B-A3B    (20 GB,  v0.3.0 Spiral_4_5)
+
+      On first run, the selected model downloads automatically to
+      ~/.spiral/models/
 
       Quick start:
-        spiral-chat                     # interactive chat
-        spiral-serve                    # API server on port 8080
-        spiral-chat --prompt "hello"    # single prompt
-
-      Models are stored in ~/.spiral/models/
+        spiral-chat                                    # 7B interactive (default)
+        spiral-chat --model qwen-36-35b-spiral         # 35B interactive
+        spiral-serve --model qwen-36-35b-spiral        # API server on port 8080
+        spiral-chat --prompt "hello" --greedy          # single prompt
 
       For more info: spiral-chat --help
     EOS
