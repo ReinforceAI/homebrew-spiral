@@ -1,8 +1,8 @@
 class Spiral < Formula
   desc "Calibration-free transformer compression for Qwen on Mac and CUDA"
   homepage "https://github.com/ReinforceAI/spiral"
-  url "https://github.com/ReinforceAI/spiral/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "5de985fcb313d4e4c25dfc2220dff0500ad4d128d99407342545537539a6dbdc"
+  url "https://github.com/ReinforceAI/spiral/archive/refs/tags/v0.3.1.tar.gz"
+  sha256 "ff1d5a4ffd5f64285d085b020f87dcb58453967280521a675c5ee45d2ff582ec"
   license "MIT"
 
   depends_on "cmake" => :build
@@ -42,10 +42,11 @@ class Spiral < Formula
 
   def caveats
     <<~EOS
-      Spiral v0.3.0 installed. Available models:
+      Spiral v0.3.1 installed. Available models:
 
         qwen-25-7b-spiral     Qwen2.5-Coder-7B   (3.0 GB,  v0.2.0 Spiral_3)
         qwen-36-35b-spiral    Qwen3.6-35B-A3B    (20 GB,  v0.3.0 Spiral_4_5)
+        sarvam-30b-spiral     Sarvam-30B Indic   (18 GB,  v1.0   Spiral_Q4)
 
       On first run, the selected model downloads automatically to
       ~/.spiral/models/
@@ -53,6 +54,7 @@ class Spiral < Formula
       Quick start:
         spiral-chat                                    # 7B interactive (default)
         spiral-chat --model qwen-36-35b-spiral         # 35B interactive
+        spiral-chat --model sarvam-30b-spiral          # Sarvam-30B Indic-multilingual
         spiral-serve --model qwen-36-35b-spiral        # API server on port 8080
         spiral-chat --prompt "hello" --greedy          # single prompt
 
